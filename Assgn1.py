@@ -18,9 +18,9 @@ bestsol = []
 
 def criteria_check(sol,mode="Holder"):
     if mode!="Holder":
-        return np.abs(sol[0]) >= limitsEgg[0] and np.abs(sol[1]) <= limitsEgg[1]
+        return limitsEgg[0] <= sol[0] <= limitsEgg[1] and limitsEgg[0] <= sol[1] <= limitsEgg[1] 
     else:
-        return np.abs(sol[0]) >= limitsHolder[0] and np.abs(sol[1]) <= limitsHolder[1]
+        return limitsHolder[0] <= sol[0] <= limitsHolder[1] and limitsHolder[0] <= sol[1] <= limitsHolder[1]                                                                                                                                    #YMC98
 
 def fitfunc(sol, mode="Egg", objfnmode=None):#Egg,None for egg holder
     if objfnmode == None:
@@ -45,7 +45,7 @@ def gencandidate(mode):
         candidates = [np.random.uniform(-1,1,2) for i in range(pop_size)]
     return candidates
         
-candidates = gencandidate('Egg')
+candidates = gencandidate('Holder')
 #pdb.set_trace()
 
 for j in range(gens):
@@ -76,18 +76,18 @@ for j in range(gens):
                     (candidates[i][1],temp[1]) = (temp[1],candidates[i][1])
             print("CrossOver")
             #Check Criteria
-            check = criteria_check(candidates[i],'Egg')
+            check = criteria_check(candidates[i],'Holder')
             print('check is ',check)
             print('temp : ',temp)
             print('candidates : ',candidates[i])
             #print("Check Criteria")
         #Perform Selection
-        if fitfunc(temp,"Egg") < fitfunc(candidates[i],"Egg"):
+        if fitfunc(temp,"Egg") < fitfunc(candidates[i],'Holder'):
             candidates[i] = temp
         print('selection')
         print('delta value ',delta)
-        if delta > fitfunc(candidates[i],"Egg"):
-            delta = fitfunc(candidates[i],"Egg")
+        if delta > fitfunc(candidates[i],'Holder'):
+            delta = fitfunc(candidates[i],'Holder')
         bestsol.append(delta)
 
 
