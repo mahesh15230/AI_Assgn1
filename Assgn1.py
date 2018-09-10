@@ -95,24 +95,3 @@ plt.plot(bestsol)                                                               
 plt.ylabel("Best solution generation-wise")                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        #YMC98        #YMC98
 print('whew')                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       #YMC98         #YMC98
 print("last best sol is ",delta)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           #YMC98                     #YMC98
-        
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
